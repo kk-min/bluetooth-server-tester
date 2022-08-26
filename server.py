@@ -27,7 +27,7 @@ class server():
         
     def connect(self):
         try:
-            log.info('Establishing connection with N7 Tablet')
+            log.info('Establishing connection with device...')
             self.server_sock = bt.BluetoothSocket(bt.RFCOMM)
 
             self.server_sock.bind(("", RFCOMM_CHANNEL))
@@ -43,10 +43,10 @@ class server():
             
             log.info('Waiting connection from RFCOMM Channel')
             self.client_sock, address = self.server_sock.accept()
-            log.info("Successfully connected to Android at address: " + str(address))
+            log.info("Successfully connected to device at address: " + str(address))
 
         except Exception as error:	
-            log.error("Connection with Android failed: " + str(error))
+            log.error("Connection with device failed: " + str(error))
             self.client_sock.close()
             self.server_sock.close()
         
@@ -62,7 +62,6 @@ class server():
     def write(self, message):
         try:
             self.client_sock.send(message)
-            # log.info('Successfully wrote to Android: ' + str(message))
         except Exception as error:	
             raise
 
@@ -72,4 +71,4 @@ class server():
             self.server_sock.close()
             log.info("Disconnected Successfully")
         except Exception as error:	
-            log.error("Android disconnect failed: " + str(error))
+            log.error("Disconnect failed: " + str(error))
