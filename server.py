@@ -57,6 +57,7 @@ class server():
                 return msg
             return None
         except Exception as error:	
+            log.error("Input reading failed.")
             raise
       
     def write(self, message):
