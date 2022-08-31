@@ -4,7 +4,10 @@ from threading import Thread
 
 def receive_message(input_server):
     while(True):
-        incomingMessage = input_server.read()
+        try:
+            incomingMessage = input_server.read()
+        except:
+            return
         if(incomingMessage != None):
             print("Message from client: "+incomingMessage);
         time.sleep(2)
