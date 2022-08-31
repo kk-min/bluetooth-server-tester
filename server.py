@@ -60,6 +60,7 @@ class server():
             log.error("Input reading failed.")
             raise
       
+      
     def write(self, message):
         try:
             self.client_sock.send(message)

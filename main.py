@@ -37,4 +37,5 @@ send_thread = Thread(target=send_message, args=(test_server, "Hello from Server!
 poll_thread = Thread(target=poll, args=(test_server,))
 receive_thread.start()
 send_thread.start()
+time.sleep(2)
 poll_thread.start()
