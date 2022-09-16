@@ -12,14 +12,21 @@ def receive_message(input_server):
             print("Message from client: "+incomingMessage);
         time.sleep(2)
 
+def get_input(input_server):
+    while(True):
+        message=input("Enter message to send: ")
+        send_thread = Thread(target=send_message, args=(input_server, message))
+        send_thread.start()
+        time.sleep(1)
+
 def send_message(input_server, message):
     input_server.write(message)
-    print("Message to client: "+message)
+    print("Message to client: "+message+"\n")
 
 def poll(input_server):
     while True:
         try:
-            input_server.write("poll")
+            input_server.write("polling")
         except:
             input_server.disconnect()
             print("Disconnected. Attempting reconnection...")
@@ -36,9 +43,9 @@ def poll(input_server):
 test_server = server()
 test_server.connect()
 receive_thread = Thread(target=receive_message, args=(test_server,))
-send_thread = Thread(target=send_message, args=(test_server, "Hello from Server!"))
+input_thread = Thread(target=get_input, args=(test_server,))
 poll_thread = Thread(target=poll, args=(test_server,))
 receive_thread.start()
-send_thread.start()
+input_thread.start()
 time.sleep(2)
 poll_thread.start()
