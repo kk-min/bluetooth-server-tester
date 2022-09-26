@@ -9,7 +9,7 @@ def receive_message(input_server):
         except:
             return
         if(incomingMessage != None):
-            print("Message from client: "+incomingMessage);
+            print("\nMessage from client: "+incomingMessage);
         time.sleep(2)
 
 def get_input(input_server):
