@@ -6,19 +6,6 @@ from config import LOCALE
 
 log = Logger()
 
-'''
-Rapsberry Pi serves as socket server, N7 will need a client socket script
-as well to establish connection. Should be able to send and receive messages
-via the server/client.
-TO-DO: Check if Rpi and N7 is server-client or client-client
-android = Android()
-android.connect()
-import time
-while True:
-    android.read()
-    time.sleep(1000)
-'''
-
 class server():
     def __init__(self):
         self.server_sock = None
