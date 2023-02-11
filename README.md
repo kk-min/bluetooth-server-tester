@@ -1,5 +1,5 @@
 # Bluetooth Server Tester
-Copyright © 2022 Min Kabar Kyaw
+Copyright © 2023 Min Kabar Kyaw
 
 Creates a bluetooth server on the host machine for testing connections.
 
